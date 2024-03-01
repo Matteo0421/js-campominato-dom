@@ -64,3 +64,8 @@
 .clicked{
   background-color: beige;
 }
+
+.final-match {
+  pointer-events: none;
+  opacity: 0.5;
+}

@@ -51,10 +51,36 @@ function addBombs() {
   }
 }
 
+
 function endGame() {
-  reset()
+  let punteggio = 0;
+
+  const squareElements = document.querySelectorAll('.square');
+
+  for (let i = 0; i < squareElements.length; i++) {
+      const square = squareElements[i];
+
+      if (!square.classList.contains('square-bomb') && square.classList.contains('clicked')) {
+          punteggio++;
+      }
+  }
+
+  const finalMessage = document.getElementById('final-message');
+
+  const message = `
+      <p>Hai perso la partita!</p>
+      <p>Punteggio: ${punteggio}</p>
+  `;
+
+  finalMatch();
+  finalMessage.innerHTML = message;
+
 }
 
+function finalMatch(){
+  gridContainer.classList.add('final-match');
+
+}
 
 function reset(){
   gridContainer.innerHTML='';
