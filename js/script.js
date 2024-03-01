@@ -11,10 +11,13 @@ function startPlay(){
   for(let i=1; i<= 100; i++){
     const square = getSquare(i);
     gridContainer.append(square);
+
+
   }
 }
 
 function getSquare(numero){
+
   const sq = document.createElement('div');
   sq.className = 'square';
 
@@ -23,24 +26,28 @@ function getSquare(numero){
   sq.addEventListener ('click', function(){
     const numero = this._sqID;
 
-    this.innerHTML = (!this.classList.contains('clicked'))
-                      ? this.innerHTML = numero
-                      : this.innerHTML = '';
+    console.log(numero);
 
-    this.classList.toggle('clicked');
-    this.classList.toggle(getOddEvenClass(numero));
+    this.classList.add('clicked');
 
   })
   
   return sq;
 }
 
-function getOddEvenClass(n){
-  if( n % 2 === 0 ){
-    return 'even';
-  }
-  return 'odd';
+function getBomb (numero){
+  const sqBomb = document.createElement('div');
+  sqBomb.className = 'square-bomb'
+
+  sqBomb._sqID = numero;
+
+  numero = 10;
+
 }
+
+
+
+
 
 function reset(){
   gridContainer.innerHTML='';
