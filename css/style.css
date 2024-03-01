@@ -1,0 +1,49 @@
+*{
+  box-sizing: border-box;
+}
+.main-wrapper{
+  height: 100vh;
+  background-color: white;
+}
+
+.row-head{
+  height: 10%;
+
+}
+.row-main{
+  height: 80%;
+
+  background-color: rgb(184, 205, 195);
+}
+.row-footer{
+  height: 10%;
+  background-color: white;
+}
+
+.grid-container{
+  width: 500px;
+  height: 500px;
+  aspect-ratio: 1;
+  background-color: rgb(228, 228, 228);
+}
+
+.square{
+  width: 50px;
+  height: 50px;
+  background-color: rgb(124, 172, 193);
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  flex-grow: 0;
+  cursor: pointer;
+}
+
+.square.even{
+  background-color: beige;
+}
+
+.square.odd{
+  background-color: rgba(166, 166, 238, 0.7);
+}
