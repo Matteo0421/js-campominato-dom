@@ -1,6 +1,6 @@
 const gridContainer = document.querySelector('.grid-container');
 const btnStart = document.querySelector('.btn-start');
-
+let bombePosizionate = [];
 
 btnStart.addEventListener('click', startPlay)
 
@@ -14,6 +14,8 @@ function startPlay(){
 
 
   }
+
+  addBombs();
 }
 
 function getSquare(numero){
@@ -23,32 +25,39 @@ function getSquare(numero){
 
   sq._sqID = numero;
 
-  sq.addEventListener ('click', function(){
+  sq.addEventListener('click', function() {
     const numero = this._sqID;
-
-    console.log(numero);
-
-    this.classList.add('clicked');
+    if (bombePosizionate.includes(numero)) {
+      this.classList.add('square-bomb');
+      endGame();
+      console.log("Bomba cliccata!");
+    } else {
+      this.classList.add('clicked');
+    }
 
   })
   
   return sq;
 }
 
-function getBomb (numero){
-  const sqBomb = document.createElement('div');
-  sqBomb.className = 'square-bomb'
 
-  sqBomb._sqID = numero;
-
-  numero = 10;
-
+function addBombs() {
+  const numBombe = 16;
+  while (bombePosizionate.length < numBombe) {
+    const posizioneCasuale = Math.floor(Math.random() * 100) + 1;
+    if (!bombePosizionate.includes(posizioneCasuale)) {
+      bombePosizionate.push(posizioneCasuale);
+    }
+  }
 }
 
-
-
+function endGame() {
+  reset()
+}
 
 
 function reset(){
   gridContainer.innerHTML='';
+  bombePosizionate = [];
+
 }
